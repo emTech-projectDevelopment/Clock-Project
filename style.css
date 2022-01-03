@@ -1,0 +1,108 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: linear-gradient(rgba(255, 192, 203, 0.548), rgba(129, 160, 216, 0.385));
+}
+
+.clock {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    border: 3px double rgba(129, 160, 216, 0.785);
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.45);
+    /* background-image: url('lexus.png');
+    background-size: cover;
+    background-position: center; */
+
+}
+.clock .hours {
+    --rotation: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform: rotate(var(--rotation));
+}
+
+.clock .one {--rotation:30deg;}
+.clock .two {--rotation:60deg;}
+.clock .three {--rotation:90deg;}
+.clock .four {--rotation:120deg;}
+.clock .five {--rotation:150deg;}
+.clock .six {--rotation:180deg;}
+.clock .seven {--rotation:210deg;}
+.clock .eight {--rotation:240deg;}
+.clock .nine {--rotation:270deg;}
+.clock .ten {--rotation:300deg;}
+.clock .eleven {--rotation:330deg;}
+
+.clock .hand {
+    --rotation: 0;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    border: 1px dotted white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 10;
+    transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+    transform-origin: bottom;
+}
+.clock .hand.hour {
+    width: 10px;
+    height: 35%;
+    background-color: rgba(137, 43, 226, 0.562);
+}
+.clock .hand.minute {
+    width: 6px;
+    height: 40%;
+    background-color: lightblue;
+}
+.clock .hand.second {
+    width: 3px;
+    height: 45%;
+    background-color: red;
+}
+.clock::after {
+    content: "";
+    width:15px;
+    height: 15px;
+    position: absolute;
+    z-index: 11;
+    top: 50%;
+    left: 50%;
+    background-color: silver;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+.clock .hours {
+    color: white;
+    font-family: monospace;
+    font-size: 1.5rem;
+    text-shadow: 2px 2px 3px rgba(100, 148, 237, 0.856);
+    animation: popNums 1s linear infinite;
+}
+@keyframes popNums {
+    0% {
+        transform: rotate(0deg);
+        color: white;
+    }
+    40% {
+        color: white;
+    }
+    100% {
+        color: rgb(69, 104, 48);
+    }
+}
